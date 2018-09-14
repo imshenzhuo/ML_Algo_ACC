@@ -9,6 +9,10 @@ def calcACC(groundTruth, predValue):
     :param predValue:预测值 np.ndarray
     :return:ACC:正确率 
     """
+    if len(groundTruth.shape) != 1:
+        groundTruth = groundTruth.reshape(groundTruth.shape[0])
+    if len(predValue.shape) != 1:
+        predValue = predValue.reshape(predValue.shape[0])
     # predValue 匹配真实值 groundTruth
     res = bestMap(groundTruth, predValue)
     ACC = np.sum(res == groundTruth) / groundTruth.shape[0]
