@@ -40,6 +40,6 @@ def bestMap(L1, L2):
     resultMap = hungarian.get_results()
     resultMap = sorted(resultMap, key=lambda s: s[1]) # resultMap[1] = (trueId, predId)
     newL = np.zeros(L1.shape[0], dtype=np.uint)
-    for i in Label1:
-        newL[L2 == i] = resultMap[i][0]
+    for i,v in enumerate(Label1):
+        newL[L2 == v] = Label1[resultMap[i][0]]
     return newL
