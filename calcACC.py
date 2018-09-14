@@ -38,8 +38,8 @@ def bestMap(L1, L2):
     hungarian = Hungarian(G, is_profit_matrix=True)
     hungarian.calculate()
     resultMap = hungarian.get_results()
-    resultMap = sorted(resultMap, key=lambda s: s[1])
+    resultMap = sorted(resultMap, key=lambda s: s[1]) # resultMap[1] = (trueId, predId)
     newL = np.zeros(L1.shape[0], dtype=np.uint)
-    for i in range(nClass):
-        newL[L2 == i + 1] = resultMap[i][0] + 1
+    for i in Label1:
+        newL[L2 == i] = resultMap[i][0]
     return newL
